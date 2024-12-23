@@ -4,8 +4,6 @@ import Image from "next/image";
 import { sendMessageAtom } from "@/common/store/chat/chat";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil"; 
-import { responseCookiesToRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
-
 
 type ChatMessage = {
     id: number;

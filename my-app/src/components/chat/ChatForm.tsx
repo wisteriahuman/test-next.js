@@ -1,12 +1,39 @@
 "use client";
 
 
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useRecoilState } from "recoil";
 import { sendMessageAtom } from "@/common/store/chat/chat";
 
 
-export default function ChatForm() {
+export const ChatForm: React.FC = () => {
+    const [message, setMessage] = useState<string>("");
+    const [, setSender] = useRecoilState(sendMessageAtom);
+
+    const sendMessage = async () => {
+        if (!message) return;
+
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    role: "user",
+                    message: message,
+                }),
+            });
+
+            const data = await response.json();
+            setSender(true);
+        } catch (err) {
+            console.error(err);
+        }
+
+        setMessage("");
+    };
+
     return (
         <div
             style={{
@@ -19,13 +46,23 @@ export default function ChatForm() {
         >
             <div style={{ display: "flex", gap: 10 }}>
                 <input
-                    type="text"
-                    placeholder="メッセージを入力..."
                     style={{
                         width: "100%",
                         padding: 10,
                         borderRadius: 10,
                         border: "1px solid #ccc",
+                    }}
+                    type="text"
+                    value={message}
+                    placeholder="新しいチャットを送る..."
+                    onChange={(e) => {
+                        setMessage(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
+                            e.preventDefault();
+                            sendMessage();
+                        }
                     }}
                 />
                 <button
@@ -37,7 +74,7 @@ export default function ChatForm() {
                         border: "none",
                     }}
                     onClick={() => {
-                        sendMessageAtom();
+                        sendMessage();
                     }}
                 >
                     送信
