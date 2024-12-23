@@ -1,1 +1,1 @@
-# Next.jsの試用
+# Next.jsの練習用
