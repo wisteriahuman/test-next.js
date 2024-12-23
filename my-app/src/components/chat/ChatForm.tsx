@@ -1,3 +1,11 @@
+"use client";
+
+
+import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { useRecoilState } from "recoil";
+import { sendMessageAtom } from "@/common/store/chat/chat";
+
+
 export default function ChatForm() {
     return (
         <div
@@ -27,6 +35,9 @@ export default function ChatForm() {
                         color: "white",
                         borderRadius: 10,
                         border: "none",
+                    }}
+                    onClick={() => {
+                        sendMessageAtom();
                     }}
                 >
                     送信
