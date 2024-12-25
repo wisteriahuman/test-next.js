@@ -1,6 +1,8 @@
+"use client";
+
 import "./globals.css";
 import { ReactNode } from "react";
-import AppProvider from "./provider";
+import { Provider } from "jotai";
 import Header from "@/components/layout/Header";
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -12,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <main
             style={{ background: "#f1f3f7", width: "100%", height: "100vh"}}
           >
-            <AppProvider>{children}</AppProvider>
+            <Provider>{children}</Provider>
           </main>
         </body>
       </html>
