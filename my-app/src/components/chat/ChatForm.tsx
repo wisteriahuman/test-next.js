@@ -2,13 +2,13 @@
 
 
 import React, { ChangeEvent, KeyboardEvent, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 import { sendMessageAtom } from "@/common/store/chat/chat";
 
 
 export const ChatForm: React.FC = () => {
     const [message, setMessage] = useState<string>("");
-    const [, setSender] = useRecoilState(sendMessageAtom);
+    const [, setSender] = useAtom(sendMessageAtom);
 
     const sendMessage = async () => {
         if (!message) return;

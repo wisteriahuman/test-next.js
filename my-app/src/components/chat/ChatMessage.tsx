@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { sendMessageAtom } from "@/common/store/chat/chat";
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil"; 
+import { useAtom } from "jotai"; 
 
 type ChatMessage = {
     id: number;
@@ -13,7 +13,7 @@ type ChatMessage = {
 
 export const ChatMessage: React.FC = () => {
     const [inputMessage, setInputMessage] =  useState<ChatMessage[]>([]);
-    const [sender, setSender] = useRecoilState(sendMessageAtom);
+    const [sender, setSender] = useAtom(sendMessageAtom);
 
     useEffect(() => {
         const getMessages = async () => {

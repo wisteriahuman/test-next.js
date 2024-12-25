@@ -1,6 +1,3 @@
-import { atom } from "recoil";
+import { atom } from "jotai";
 
-export const sendMessageAtom = atom<boolean>({
-    key: "sendMessage",
-    default: false,
-});
+export const sendMessageAtom = atom<boolean>(false);
