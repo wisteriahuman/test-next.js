@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { chatMessages } from "../chat/route";
+import { chatMessages } from "../chat/messages";
 
 export function GET(request: Request) {
     return NextResponse.redirect(new URL("/", request.url));
