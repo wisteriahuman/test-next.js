@@ -1,12 +1,5 @@
 import { NextResponse } from "next/server";
-
-const chatMessages = [
-    {
-        id: 1,
-        role: "bot",
-        message: "こんにちは！",
-    },
-];
+import { chatMessages } from "./messages";
 
 export function GET() {
     return NextResponse.json(chatMessages);

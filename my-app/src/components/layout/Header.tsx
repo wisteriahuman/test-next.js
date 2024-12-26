@@ -18,8 +18,23 @@ export default function ButtonAppBar() {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorE1(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = async () => {
         setAnchorE1(null);
+        try {
+            await fetch("/api/logout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    role: "user",
+                    message: "Logout",
+                }),
+            });
+            window.location.reload();
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
