@@ -1,9 +1,11 @@
 "use client";
 
 
-import React, { ChangeEvent, KeyboardEvent, useState } from "react";
+import { useState } from "react";
 import { useAtom } from "jotai";
 import { sendMessageAtom } from "@/common/store/chat/chat";
+import { Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 
 export const ChatForm: React.FC = () => {
@@ -48,6 +50,7 @@ export const ChatForm: React.FC = () => {
                 <input
                     style={{
                         width: "100%",
+                        lineHeight: 2.5,
                         padding: 10,
                         borderRadius: 10,
                         border: "1px solid #ccc",
@@ -65,20 +68,14 @@ export const ChatForm: React.FC = () => {
                         }
                     }}
                 />
-                <button
-                    style={{
-                        padding: 10,
-                        background: "#006bd6",
-                        color: "white",
-                        borderRadius: 10,
-                        border: "none",
-                    }}
+                <Button
+                    variant="contained"
                     onClick={() => {
                         sendMessage();
                     }}
                 >
-                    送信
-                </button>
+                    <SendIcon />
+                </Button>
             </div>
         </div>
     );
