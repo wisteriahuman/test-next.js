@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const chatMessages = [
+export const chatMessages = [
     {
         id: 1,
         role: "bot",
