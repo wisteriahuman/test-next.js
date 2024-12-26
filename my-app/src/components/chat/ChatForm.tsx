@@ -16,7 +16,7 @@ export const ChatForm: React.FC = () => {
         if (!message) return;
 
         try {
-            const response = await fetch("/api/chat", {
+            await fetch("/api/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -27,7 +27,6 @@ export const ChatForm: React.FC = () => {
                 }),
             });
 
-            const data = await response.json();
             setSender(true);
         } catch (err) {
             console.error(err);
