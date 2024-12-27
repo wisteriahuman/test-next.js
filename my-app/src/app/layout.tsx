@@ -9,6 +9,11 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <html lang="ja">
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <title>チャットアプリ</title>
+        </head>
         <body>
           <Header />
           <main
